@@ -1,0 +1,22 @@
+#include <stdio.h>
+#define THRESHOLD 30
+void Fan_ON()
+{
+    printf("Fan ON\n");
+}
+void Fan_OFF()
+{
+    printf("Fan OFF\n");
+}
+int main()
+{
+    int temperature;
+    printf("Enter Temperature (°C): ");
+    scanf("%d", &temperature);
+    printf("Temperature = %d°C\n", temperature);
+    if (temperature >= THRESHOLD)
+        Fan_ON();
+    else
+        Fan_OFF();
+    return 0;
+}
