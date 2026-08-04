@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdint.h>
+/* Simulated Hardware Register */
+volatile uint8_t PORT = 0;
+/* ---------- Standard C ---------- */
+void standardC_LED_ON()
+{
+    PORT = 1;          // Assign value directly
+}
+/* ---------- Embedded C ---------- */
+void embeddedC_LED_ON()
+{
+    PORT |= (1 << 0);  // Set Bit 0
+}
+void embeddedC_LED_OFF()
+{
+    PORT &= ~(1 << 0); // Clear Bit 0
+}
+void embeddedC_LED_TOGGLE()
+{
+    PORT ^= (1 << 0);  // Toggle Bit 0
+}
+int main()
+{
+    printf("Initial PORT = %u\n", PORT);
+    standardC_LED_ON();
+    printf("After Standard C = %u\n", PORT);
+    embeddedC_LED_OFF();
+    printf("After Embedded C OFF = %u\n", PORT);
+    embeddedC_LED_ON();
+    printf("After Embedded C ON = %u\n", PORT);
+    embeddedC_LED_TOGGLE();
+    printf("After Embedded C TOGGLE = %u\n", PORT);
+    return 0;
+}
